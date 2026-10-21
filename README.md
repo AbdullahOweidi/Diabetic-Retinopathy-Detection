@@ -15,14 +15,15 @@ Automated Diabetic Retinopathy (DR) screening often relies on deep, compute-heav
 
 All transfer models were fine-tuned for 5 epochs using pretrained ImageNet weights, Adam optimization ($\alpha = 10^{-4}$), and Cross-Entropy loss on a stratified 80/20 train/test split (28,086 training images, 7,022 testing images).
 
-### Head-to-Head Performance
+### Experimental Results (Per-Class Precision / Recall / F1-Score)
 
-| Model | Parameters | Accuracy | Class 0 F1 | Class 1 F1 | Class 2 F1 | Class 3 F1 | Class 4 F1 (Recall) |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **EfficientNet-B0** | **~5.3M** | **82%** | **0.91** | **0.02** | **0.61** | **0.49** | **0.63 (0.56)** |
-| **MobileNetV3-Large** | **~5.4M** | **81%** | **0.91** | **0.03** | **0.59** | **0.51** | **0.65 (0.62)** |
-| *ResNet18 (Baseline)* | ~11.7M | 80% | 0.90 | 0.00 | 0.56 | 0.25 | 0.62 (0.50) |
-| *VGG16 (Baseline)* | ~138M | 81% | 0.91 | 0.00 | 0.58 | 0.27 | 0.56 (0.41) |
+| Model | Accuracy | Class 0 (P / R / F1) | Class 1 (P / R / F1) | Class 2 (P / R / F1) | Class 3 (P / R / F1) | Class 4 (P / R / F1) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **EfficientNet-B0** | **82%** | 0.86 / 0.96 / 0.91 | 0.50 / 0.01 / 0.02 | 0.64 / 0.59 / 0.61 | 0.53 / 0.47 / 0.49 | **0.72 / 0.56 / 0.63** |
+| **MobileNetV3** | **81%** | 0.86 / 0.95 / 0.91 | 0.47 / 0.02 / 0.03 | 0.60 / 0.59 / 0.59 | 0.52 / 0.49 / 0.51 | **0.69 / 0.62 / 0.65** |
+| *ResNet18* | 80% | 0.84 / 0.97 / 0.90 | 1.00 / 0.00 / 0.00 | 0.60 / 0.52 / 0.56 | 0.68 / 0.15 / 0.25 | 0.81 / 0.50 / 0.62 |
+| *VGG16* | 81% | 0.84 / 0.99 / 0.91 | 1.00 / 0.00 / 0.00 | 0.67 / 0.52 / 0.58 | 0.76 / 0.17 / 0.27 | 0.87 / 0.41 / 0.56 |
+| *Custom CNN* | 73% | — | — | — | — | — |
 
 ---
 
